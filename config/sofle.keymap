@@ -14,6 +14,10 @@
 #define LOWER 1
 #define RAISE 2
 #define ADJUST 3
+#define ACCENT_AGUDO 4
+#define ACCENT_GRAVE 5
+#define ACCENT_TIL 6
+#define ACCENT_CIRC 7
 
 / {
     // Activate ADJUST layer by pressing raise and lower
@@ -27,12 +31,136 @@
         };
     };
 
+    behaviors {
+        grv_tilde: grave_tilde {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sl ACCENT_GRAVE>, <&sl ACCENT_TIL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        six_circ: six_circumflex {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N6>, <&sl ACCENT_CIRC>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+
     macros {
-        accute_a: accute_a {
+        // Acute accent macros (´)
+        acute_a: acute_a {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N1 &kp RET>;
-            label = "ACCUTE_A";
+            label = "ACUTE_A";
+        };
+        acute_e: acute_e {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N9 &kp RET>;
+            label = "ACUTE_E";
+        };
+        acute_i: acute_i {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp D &kp RET>;
+            label = "ACUTE_I";
+        };
+        acute_o: acute_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp N3 &kp RET>;
+            label = "ACUTE_O";
+        };
+        acute_u: acute_u {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp A &kp RET>;
+            label = "ACUTE_U";
+        };
+        cedilla_c: cedilla_c {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N7 &kp RET>;
+            label = "CEDILLA_C";
+        };
+
+        // Grave accent macros (`)
+        grave_a: grave_a {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N0 &kp RET>;
+            label = "GRAVE_A";
+        };
+        grave_e: grave_e {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N8 &kp RET>;
+            label = "GRAVE_E";
+        };
+        grave_i: grave_i {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp C &kp RET>;
+            label = "GRAVE_I";
+        };
+        grave_o: grave_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp N2 &kp RET>;
+            label = "GRAVE_O";
+        };
+        grave_u: grave_u {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp N9 &kp RET>;
+            label = "GRAVE_U";
+        };
+
+        // Tilde macros (~)
+        tilde_a: tilde_a {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N3 &kp RET>;
+            label = "TILDE_A";
+        };
+        tilde_o: tilde_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp N5 &kp RET>;
+            label = "TILDE_O";
+        };
+
+        // Circumflex accent macros (^)
+        circ_a: circ_a {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp N2 &kp RET>;
+            label = "CIRC_A";
+        };
+        circ_e: circ_e {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp A &kp RET>;
+            label = "CIRC_E";
+        };
+        circ_i: circ_i {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp E &kp E &kp RET>;
+            label = "CIRC_I";
+        };
+        circ_o: circ_o {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp N4 &kp RET>;
+            label = "CIRC_O";
+        };
+        circ_u: circ_u {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(U) &kp PLUS &kp N0 &kp N0 &kp F &kp B &kp RET>;
+            label = "CIRC_U";
         };
     };
 
@@ -50,11 +178,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp GRAVE      &kp N1  &kp N2            &kp N3        &kp N4         &kp N5                             &kp N6  &kp N7        &kp N8              &kp N9              &kp N0    &kp MINUS
-&kp TAB        &kp Q   &kp W             &kp E         &kp R          &kp T                              &kp Y   &kp U         &kp I               &kp O               &kp P     &kp BSPC
-&mt LCTRL ESC  &kp A   &kp S             &kp D         &kp F          &kp G                              &kp H   &kp J         &kp K               &kp L               &kp SEMI  &kp SINGLE_QUOTE
-&kp LSHFT      &kp Z   &kp X             &kp C         &kp V          &kp B   &kp C_MUTE    &kp K_POWER  &kp N   &kp M         &kp COMMA           &kp DOT             &kp FSLH  &kp RSHFT
-                       &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &mo 1   &kp RET       &kp SPACE    &mo 2   &kp RS(RGUI)  &kp LA(RIGHT_META)  &kp RC(RIGHT_META)
+&grv_tilde        &kp N1  &kp N2            &kp N3        &kp N4         &kp N5                             &six_circ  &kp N7        &kp N8              &kp N9              &kp N0    &kp MINUS
+&kp TAB           &kp Q   &kp W             &kp E         &kp R          &kp T                              &kp Y      &kp U         &kp I               &kp O               &kp P     &kp BSPC
+&mt LCTRL ESC     &kp A   &kp S             &kp D         &kp F          &kp G                              &kp H      &kp J         &kp K               &kp L               &kp SEMI  &sl ACCENT_AGUDO
+&kp LSHFT         &kp Z   &kp X             &kp C         &kp V          &kp B   &kp C_MUTE    &kp K_POWER  &kp N      &kp M         &kp COMMA           &kp DOT             &kp FSLH  &kp RSHFT
+                          &kp LEFT_CONTROL  &kp LEFT_ALT  &kp LEFT_META  &mo 1   &kp RET       &kp SPACE    &mo 2      &kp RS(RGUI)  &kp LA(RIGHT_META)  &kp RC(RIGHT_META)
             >;
 
             sensor-bindings =
@@ -112,21 +240,55 @@
 
             display-name = "adjust";
             bindings = <
-&bt BT_CLR         &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                               &none      &none  &none  &none  &none  &none
-&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                            &none      &none  &none  &none  &none  &none
-&none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &none                                      &accute_a  &none  &none  &none  &none  &none
-&none              &none            &none            &none            &none            &none            &rgb_ug RGB_TOG    &none  &none      &none  &none  &none  &none  &none
-                                    &none            &none            &none            &none            &none              &none  &none      &none  &none  &none
+&bt BT_CLR         &bt BT_SEL 0     &bt BT_SEL 1     &bt BT_SEL 2     &bt BT_SEL 3     &bt BT_SEL 4                               &none     &none  &none  &none  &none  &none
+&ext_power EP_TOG  &rgb_ug RGB_HUD  &rgb_ug RGB_HUI  &rgb_ug RGB_SAD  &rgb_ug RGB_SAI  &rgb_ug RGB_EFF                            &none     &none  &none  &none  &none  &none
+&none              &rgb_ug RGB_BRD  &rgb_ug RGB_BRI  &none            &none            &none                                      &acute_a  &none  &none  &none  &none  &none
+&none              &none            &none            &none            &none            &none            &rgb_ug RGB_TOG    &none  &none     &none  &none  &none  &none  &none
+                                    &none            &none            &none            &none            &none              &none  &none     &none  &none  &none
             >;
         };
 
-        accute {
+        accent_agudo_layer {
+            display-name = "agudo";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                    &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans
+&trans     &trans     &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &acute_e   &trans     &trans                       &trans     &acute_u   &acute_i   &acute_o   &trans  &trans
+&trans     &acute_a   &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &cedilla_c &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans     &trans  &trans
+                      &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans
+            >;
+        };
+
+        accent_grave_layer {
+            display-name = "grave";
+            bindings = <
+&trans     &trans     &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &grave_e   &trans     &trans                       &trans     &grave_u   &grave_i   &grave_o   &trans  &trans
+&trans     &grave_a   &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans     &trans  &trans
+                      &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans
+            >;
+        };
+
+        accent_til_layer {
+            display-name = "til";
+            bindings = <
+&trans     &trans     &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &tilde_o   &trans  &trans
+&trans     &tilde_a   &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans     &trans  &trans
+                      &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans
+            >;
+        };
+
+        accent_circ_layer {
+            display-name = "circ";
+            bindings = <
+&trans     &trans     &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &circ_e    &trans     &trans                       &trans     &circ_u    &circ_i    &circ_o    &trans  &trans
+&trans     &circ_a    &trans     &trans     &trans     &trans                       &trans     &trans     &trans     &trans     &trans  &trans
+&trans     &trans     &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans     &trans  &trans
+                      &trans     &trans     &trans     &trans  &trans    &trans     &trans     &trans     &trans     &trans
             >;
         };
     };
